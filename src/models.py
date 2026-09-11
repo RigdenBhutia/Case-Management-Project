@@ -1,10 +1,14 @@
-from dataclasses import dataclass,field
+from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 
-@dataclass
-class Case:
-    id: int
-    title: str 
-    description: str
-    status: str = "open"
-    created_at: datetime = field(default_factory=datetime.now)
+Base = declarative_base()
+
+class Case(Base):
+    __tablename__ = "cases"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, nullable=False)
+    description = Column(String, nullable=False)
+    status = Column(String, default="open")
+    created_at = Column(DateTime, default=datetime.now)
