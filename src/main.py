@@ -33,3 +33,28 @@ def get_case(case_id: int, db: Session = Depends(get_db)):
     if not case:
         raise HTTPException(status_code=404, detail="Case not found")
     return case
+
+
+from typing import Optional
+
+class CaseUpdate(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    status: Optional[str] = None
+
+@app.put("/cases/{case_id}")
+def update_case(case_id: int, case_update: CaseUpdate, db: Session = Depends(get_db)):
+    case = db.query(Case).filter(Case.id == case_id).first()
+    if not case:
+        raise HTTPException(status_code=404, detail="Case not found")
+
+    if case_update.title is not None:
+        case.title = case_update.title
+    if case_update.description is not None:
+        case.description = case_update.description
+    if case_update.status is not None:
+        case.status = case_update.status
+
+    db.commit()
+    db.refresh(case)
+    return case    
