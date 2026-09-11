@@ -4,7 +4,7 @@ from datetime import datetime
 @dataclass
 class Case:
     id: int
-    title: str
+    title: str 
     description: str
     status: str = "open"
     created_at: datetime = field(default_factory=datetime.now)
