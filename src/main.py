@@ -3,6 +3,13 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from src.database import SessionLocal
 from src.models import Case
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
@@ -23,6 +30,7 @@ def create_case(case: CaseCreate, db: Session = Depends(get_db)):
     db.add(new_case)
     db.commit()
     db.refresh(new_case)
+    logger.info(f"Case created: id={new_case.id}, title={new_case.title}")
     return new_case
 
 from fastapi import HTTPException
@@ -31,7 +39,9 @@ from fastapi import HTTPException
 def get_case(case_id: int, db: Session = Depends(get_db)):
     case = db.query(Case).filter(Case.id == case_id).first()
     if not case:
+        logger.warning(f"Case not found: id={case_id}")
         raise HTTPException(status_code=404, detail="Case not found")
+    logger.info(f"Case retrieved: id={case_id}")
     return case
 
 
@@ -46,6 +56,7 @@ class CaseUpdate(BaseModel):
 def update_case(case_id: int, case_update: CaseUpdate, db: Session = Depends(get_db)):
     case = db.query(Case).filter(Case.id == case_id).first()
     if not case:
+        logger.warning(f"Case not found for update: id={case_id}")
         raise HTTPException(status_code=404, detail="Case not found")
 
     if case_update.title is not None:
@@ -57,4 +68,5 @@ def update_case(case_id: int, case_update: CaseUpdate, db: Session = Depends(get
 
     db.commit()
     db.refresh(case)
-    return case    
+    logger.info(f"Case updated: id={case_id}")
+    return case
