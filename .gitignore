@@ -2,3 +2,5 @@
 config/.env
 venv/
 app.log
+__pycache__/
+*.pyc
