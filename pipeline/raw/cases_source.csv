@@ -1,8 +1,8 @@
-id,title,description,status,created_at
-101,Laptop not booting,Device fails to power on,open,2026-09-01
-102,VPN access issue,Cannot connect to company VPN,in_progress,2026-09-02
-103,Password reset,User forgot login password,closed,2026-09-03
-104,Printer offline,Office printer not responding,open,2026-09-04
-105,,Email sync issue,open,2026-09-05
-106,Software install request,Needs Photoshop installed,open,2026-09-06
-107,Laptop not booting,Device fails to power on,open,2026-09-01
+id,title,description,status,created_at,category_id
+101,Laptop not booting,Device fails to power on,open,2026-09-01,1
+102,VPN access issue,Cannot connect to company VPN,in_progress,2026-09-02,2
+103,Password reset,User forgot login password,closed,2026-09-03,4
+104,Printer offline,Office printer not responding,open,2026-09-04,1
+105,,Email sync issue,open,2026-09-05,3
+106,Software install request,Needs Photoshop installed,open,2026-09-06,3
+107,Laptop not booting,Device fails to power on,open,2026-09-01,1
