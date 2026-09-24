@@ -1,6 +1,17 @@
 import pandas as pd
 import json
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path="config/.env")
+MOCK_API_HOST = os.getenv("MOCK_API_HOST", "127.0.0.1")
+
+def ingest_customers_api():
+    response = requests.get(f"http://{MOCK_API_HOST}:8001/customers")
+    data = response.json()
+    return pd.DataFrame(data)
+    
 
 def ingest_cases_csv():
     df = pd.read_csv("pipeline/raw/cases_source.csv")
@@ -16,10 +27,7 @@ def ingest_policy_metadata():
         data = json.load(f)
     return pd.DataFrame(data)
 
-def ingest_customers_api():
-    response = requests.get("http://127.0.0.1:8001/customers")
-    data = response.json()
-    return pd.DataFrame(data)
+
 
 if __name__ == "__main__":
     cases_df = ingest_cases_csv()
