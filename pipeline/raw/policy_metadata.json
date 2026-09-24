@@ -1,0 +1,5 @@
+[
+  {"policy_id": "P-100", "title": "Hardware Replacement Policy", "applies_to_category": 1},
+  {"policy_id": "P-101", "title": "VPN Access Policy", "applies_to_category": 2},
+  {"policy_id": "P-102", "title": "Software Licensing Policy", "applies_to_category": 3}
+]

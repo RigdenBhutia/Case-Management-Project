@@ -1,0 +1,6 @@
+id,title,description,status,created_at,category_id,customer_id,category_name,name,department
+101,Laptop not booting,Device fails to power on,open,2026-09-01,1,2,Hardware,Rohan Mehta,IT
+102,VPN access issue,Cannot connect to company VPN,in_progress,2026-09-02,2,1,Network,Anita Rao,Finance
+103,Password reset,User forgot login password,closed,2026-09-03,4,3,Account Access,Priya Nair,HR
+104,Printer offline,Office printer not responding,open,2026-09-04,1,2,Hardware,Rohan Mehta,IT
+106,Software install request,Needs Photoshop installed,open,2026-09-06,3,3,Software,Priya Nair,HR
