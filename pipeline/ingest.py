@@ -17,7 +17,7 @@ def ingest_policy_metadata():
     return pd.DataFrame(data)
 
 def ingest_customers_api():
-    response = requests.get("http://host.docker.internal:8001/customers")
+    response = requests.get("http://127.0.0.1:8001/customers")
     data = response.json()
     return pd.DataFrame(data)
 
