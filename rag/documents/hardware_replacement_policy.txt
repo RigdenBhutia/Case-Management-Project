@@ -1,0 +1,9 @@
+Hardware Replacement Policy
+
+Employees are eligible for a hardware replacement if their device is more than 3 years old, or if it has a confirmed hardware failure verified by IT support.
+
+Laptops that fail to boot, have a cracked screen, or have a non-functional keyboard qualify for immediate replacement, regardless of age.
+
+To request a replacement, employees must submit a case through the IT support portal, including a description of the issue. IT support will verify the issue within 2 business days.
+
+Replacement devices are provisioned from current standard-issue inventory. Employees do not get to choose a specific model unless approved by their manager for role-specific requirements.

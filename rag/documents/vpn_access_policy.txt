@@ -1,0 +1,11 @@
+VPN Access Policy
+
+VPN access is granted to all full-time employees by default upon onboarding.
+
+Contractors and part-time employees require manager approval before VPN access is granted. Approval requests must be submitted through the IT support portal.
+
+VPN credentials must not be shared between employees under any circumstances.
+
+If an employee experiences VPN connectivity issues, they should first restart their VPN client and check their internet connection before submitting a support case.
+
+VPN access is automatically revoked upon employee termination or extended leave exceeding 90 days.
