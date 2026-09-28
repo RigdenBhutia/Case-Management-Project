@@ -22,18 +22,28 @@ def search(query, chunks, embeddings, top_k=3, category=None):
             break
     return results
 
+MIN_SCORE = 0.30  # starting guess, to be tuned with the evaluation set
+
+def retrieve(query, chunks, embeddings, top_k=3, category=None, min_score=MIN_SCORE):
+    results = search(query, chunks, embeddings, top_k=top_k, category=category)
+    return [r for r in results if r["score"] >= min_score]    
+
 if __name__ == "__main__":
     docs = load_documents()
     chunks = [c for d in docs for c in chunk_by_paragraph(d)]
     embeddings = build_index(chunks)
-    print("Embedding matrix shape:", embeddings.shape)
 
     questions = [
         "When can I get a new laptop?",
         "Can a contractor use the VPN?",
+        "Can I install Photoshop?",
+        "What is the weather today?",
         "What is the capital of France?",
     ]
     for q in questions:
+        results = retrieve(q, chunks, embeddings, top_k=2)
         print(f"\nQ: {q}")
-        for r in search(q, chunks, embeddings, top_k=2):
+        if not results:
+            print("  -> NO ANSWER (nothing above threshold)")
+        for r in results:
             print(f"  {r['score']:.3f} | {r['title']} | {r['text'][:70]}...")
