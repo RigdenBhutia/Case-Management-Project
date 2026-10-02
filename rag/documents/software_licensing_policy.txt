@@ -2,7 +2,7 @@ Software Licensing Policy
 
 All software installation requests must be submitted through the IT support portal and require manager approval.
 
-Only software from the approved vendor list is eligible for installation on company devices. The approved list includes Microsoft Office, Adobe Creative Cloud, and Slack.
+Only software from the approved vendor list is eligible for installation on company devices. The approved list includes Microsoft Office, Adobe Creative Cloud (including Photoshop, Illustrator, and Premiere Pro), and Slack.
 
 Requests for software not on the approved list require additional review by the IT security team, which may take up to 5 business days.
 
