@@ -22,7 +22,11 @@ def generate_answer(question, results):
     if not results:
         return NO_ANSWER
     prompt_text = build_prompt(question, results)
-    response = ollama.generate(model="llama3.2", prompt=prompt_text)
+    response = ollama.generate(
+        model="llama3.2",
+        prompt=prompt_text,
+        options={"temperature": 0, "seed": 42},
+    )
     return response["response"]
 
 if __name__ == "__main__":
