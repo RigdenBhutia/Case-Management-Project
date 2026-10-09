@@ -22,11 +22,13 @@ def search(query, chunks, embeddings, top_k=3, category=None):
             break
     return results
 
-MIN_SCORE = 0.30  # starting guess, to be tuned with the evaluation set
+MIN_SCORE = 0.35
 
 def retrieve(query, chunks, embeddings, top_k=3, category=None, min_score=MIN_SCORE):
     results = search(query, chunks, embeddings, top_k=top_k, category=category)
-    return [r for r in results if r["score"] >= min_score]    
+    if not results or results[0]["score"] < min_score:
+        return []
+    return results 
 
 if __name__ == "__main__":
     docs = load_documents()
