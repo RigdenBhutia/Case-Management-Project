@@ -3,7 +3,9 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from src.database import SessionLocal
 from src.models import Case
+from rag.service import answer_question
 import logging
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -92,3 +94,17 @@ def update_case(case_id: int, case_update: CaseUpdate, db: Session = Depends(get
         logger.error(f"Failed to update case: {str(e)}")
         db.rollback()
         raise HTTPException(status_code=500, detail="Failed to update case")
+
+class PolicyQuestion(BaseModel):
+    question: str
+    category: Optional[str] = None
+
+@app.post("/ask-policy")
+def ask_policy(payload: PolicyQuestion):
+    try:
+        result = answer_question(payload.question, payload.category)
+        logger.info(f"Policy question answered={result['answered']}: {payload.question}")
+        return result
+    except Exception as e:
+        logger.error(f"Failed to answer policy question: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to answer policy question")

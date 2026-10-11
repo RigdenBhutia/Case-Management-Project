@@ -1,0 +1,19 @@
+[
+  {"question": "My laptop won't turn on, can I get a replacement?", "should_answer": true, "expected_source": "hardware_replacement_policy.txt"},
+  {"question": "How old does a laptop need to be to qualify for replacement?", "should_answer": true, "expected_source": "hardware_replacement_policy.txt"},
+  {"question": "How long does IT take to verify a replacement request?", "should_answer": true, "expected_source": "hardware_replacement_policy.txt"},
+  {"question": "Can I choose which laptop model I get?", "should_answer": true, "expected_source": "hardware_replacement_policy.txt"},
+  {"question": "Do contractors need approval for VPN access?", "should_answer": true, "expected_source": "vpn_access_policy.txt"},
+  {"question": "Can I share my VPN login with a colleague?", "should_answer": true, "expected_source": "vpn_access_policy.txt"},
+  {"question": "What should I try first if my VPN won't connect?", "should_answer": true, "expected_source": "vpn_access_policy.txt"},
+  {"question": "When does VPN access get revoked?", "should_answer": true, "expected_source": "vpn_access_policy.txt"},
+  {"question": "Can I install Slack?", "should_answer": true, "expected_source": "software_licensing_policy.txt"},
+  {"question": "How long does review take for software that is not on the approved list?", "should_answer": true, "expected_source": "software_licensing_policy.txt"},
+  {"question": "What happens if I install software without permission?", "should_answer": true, "expected_source": "software_licensing_policy.txt"},
+  {"question": "Can I install Illustrator?", "should_answer": true, "expected_source": "software_licensing_policy.txt"},
+  {"question": "What is the capital of France?", "should_answer": false, "expected_source": null},
+  {"question": "What is the weather today?", "should_answer": false, "expected_source": null},
+  {"question": "How much does a replacement laptop cost?", "should_answer": false, "expected_source": null},
+  {"question": "What is the printer repair policy?", "should_answer": false, "expected_source": null},
+  {"question": "How do I reset my email password?", "should_answer": false, "expected_source": null}
+]

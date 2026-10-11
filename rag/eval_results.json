@@ -1,0 +1,155 @@
+[
+  {
+    "question": "My laptop won't turn on, can I get a replacement?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 2.67,
+    "answer": "Based on the provided context, yes, you can get a replacement. According to passage [1], laptops that fail to boot qualify for immediate replacement, regardless of age."
+  },
+  {
+    "question": "How old does a laptop need to be to qualify for replacement?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 1.2,
+    "answer": "[2]"
+  },
+  {
+    "question": "How long does IT take to verify a replacement request?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 2.96,
+    "answer": "According to the Hardware Replacement Policy [1], IT support will verify the issue within 2 business days."
+  },
+  {
+    "question": "Can I choose which laptop model I get?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 3.14,
+    "answer": "No, you cannot choose which laptop model you get, unless your manager approves it for role-specific requirements. [1]"
+  },
+  {
+    "question": "Do contractors need approval for VPN access?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 3.44,
+    "answer": "Yes, contractors need approval for VPN access. According to passage [1], contractors and part-time employees require manager approval before VPN access is granted."
+  },
+  {
+    "question": "Can I share my VPN login with a colleague?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 6.95,
+    "answer": "No, you cannot share your VPN login with a colleague. According to the VPN Access Policy, VPN credentials must not be shared between employees under any circumstances. [1]\n\nAdditionally, since VPN access is granted to all full-time employees by default upon onboarding, it implies that each employee has their own unique VPN login credentials. [2]"
+  },
+  {
+    "question": "What should I try first if my VPN won't connect?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 4.79,
+    "answer": "[1] If an employee experiences VPN connectivity issues, they should first restart their VPN client and check their internet connection before submitting a support case."
+  },
+  {
+    "question": "When does VPN access get revoked?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 3.15,
+    "answer": "According to the policy, VPN access gets revoked upon employee termination. [1]"
+  },
+  {
+    "question": "Can I install Slack?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 5.81,
+    "answer": "Yes, you can install Slack. According to the Software Licensing Policy [1], Slack is included in the approved list of software, which means it is eligible for installation on company devices."
+  },
+  {
+    "question": "How long does review take for software that is not on the approved list?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 4.82,
+    "answer": "According to passage [1], the review time for software not on the approved list is up to 5 business days."
+  },
+  {
+    "question": "What happens if I install software without permission?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 4.0,
+    "answer": "If you install software without permission, your device may be flagged for a security review.\n\n[1]"
+  },
+  {
+    "question": "Can I install Illustrator?",
+    "should_answer": true,
+    "refused": false,
+    "decision_ok": true,
+    "source_ok": true,
+    "seconds": 3.98,
+    "answer": "[1] Yes, Illustrator is included in the approved list of software, so it is eligible for installation on company devices."
+  },
+  {
+    "question": "What is the capital of France?",
+    "should_answer": false,
+    "refused": true,
+    "decision_ok": true,
+    "source_ok": null,
+    "seconds": 0.02,
+    "answer": "I don't have information on that in the approved policies."
+  },
+  {
+    "question": "What is the weather today?",
+    "should_answer": false,
+    "refused": true,
+    "decision_ok": true,
+    "source_ok": null,
+    "seconds": 0.02,
+    "answer": "I don't have information on that in the approved policies."
+  },
+  {
+    "question": "How much does a replacement laptop cost?",
+    "should_answer": false,
+    "refused": true,
+    "decision_ok": true,
+    "source_ok": null,
+    "seconds": 3.3,
+    "answer": "I don't have information on that in the approved policies."
+  },
+  {
+    "question": "What is the printer repair policy?",
+    "should_answer": false,
+    "refused": true,
+    "decision_ok": true,
+    "source_ok": null,
+    "seconds": 0.03,
+    "answer": "I don't have information on that in the approved policies."
+  },
+  {
+    "question": "How do I reset my email password?",
+    "should_answer": false,
+    "refused": true,
+    "decision_ok": true,
+    "source_ok": null,
+    "seconds": 0.03,
+    "answer": "I don't have information on that in the approved policies."
+  }
+]
