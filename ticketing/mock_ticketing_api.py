@@ -2,7 +2,7 @@ from datetime import datetime
 from itertools import count
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Header, HTTPException
 from pydantic import BaseModel
 
 app = FastAPI(title="Mock Ticketing System")
@@ -15,6 +15,7 @@ tickets = {
     "T-1002": {"ticket_id": "T-1002", "case_id": 2, "status": "open",
                "comment": None, "updated_at": None},
 }
+_processed = {}
 
 _next_id = count(1003)
 
@@ -62,11 +63,16 @@ def get_ticket(ticket_id: str):
 
 
 @app.put("/tickets/{ticket_id}")
-def update_ticket(ticket_id: str, update: TicketUpdate):
-    ticket = tickets.get(ticket_id)
-    if not ticket:
+def update_ticket(ticket_id: str, update: TicketUpdate,
+                  idempotency_key: Optional[str] = Header(default=None)):
+    if ticket_id not in tickets:
         raise HTTPException(status_code=404, detail="Ticket not found")
+    if idempotency_key and idempotency_key in _processed:
+        return _processed[idempotency_key]
+    ticket = tickets[ticket_id]
     ticket["status"] = update.status
     ticket["comment"] = update.comment
-    ticket["updated_at"] = datetime.now().isoformat()
+    ticket["updated_at"] = datetime.utcnow().isoformat()
+    if idempotency_key:
+        _processed[idempotency_key] = dict(ticket)
     return ticket
