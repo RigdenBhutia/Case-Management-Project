@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from src.database import SessionLocal
 from src.models import ApprovalRequest
 from workflow.tools import retrieve_case, update_ticket
+from workflow.auth import get_user, require_role
 
 app = FastAPI(title="Case Workflow")
 
@@ -48,8 +49,8 @@ def get_or_404(db: Session, request_id: int) -> ApprovalRequest:
 
 
 @app.post("/approvals", status_code=201)
-def propose(payload: ProposeUpdate, db: Session = Depends(get_db)):
-    # the case must exist before we even ask for approval
+def propose(payload: ProposeUpdate, db: Session = Depends(get_db),
+            user: dict = Depends(require_role("requester", "approver"))):
     check = retrieve_case({"case_id": payload.case_id})
     if not check.ok:
         status = 404 if check.error.code == "NOT_FOUND" else 502
@@ -69,12 +70,14 @@ def propose(payload: ProposeUpdate, db: Session = Depends(get_db)):
 
 
 @app.get("/approvals/{request_id}")
-def read_request(request_id: int, db: Session = Depends(get_db)):
+def read_request(request_id: int, db: Session = Depends(get_db), 
+                user: dict = Depends(get_user)):
     return to_dict(get_or_404(db, request_id))
 
 
 @app.post("/approvals/{request_id}/approve")
-def approve(request_id: int, db: Session = Depends(get_db)):
+def approve(request_id: int, db: Session = Depends(get_db),
+            user: dict = Depends(require_role("approver"))):
     row = get_or_404(db, request_id)
     if row.state != "pending":
         raise HTTPException(status_code=409, detail=f"Request is already {row.state}")
@@ -98,7 +101,8 @@ def approve(request_id: int, db: Session = Depends(get_db)):
 
 
 @app.post("/approvals/{request_id}/reject")
-def reject(request_id: int, db: Session = Depends(get_db)):
+def reject(request_id: int, db: Session = Depends(get_db),
+           user: dict = Depends(require_role("approver"))):
     row = get_or_404(db, request_id)
     if row.state != "pending":
         raise HTTPException(status_code=409, detail=f"Request is already {row.state}")
